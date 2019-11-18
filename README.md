@@ -1,6 +1,7 @@
-# MyYarnProject
+# MyRecipeProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
+This project is built on Angular 4 and updated with Angular 6 and it is still in progress
 
 ## Development server
 
