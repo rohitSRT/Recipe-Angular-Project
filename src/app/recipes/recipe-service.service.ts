@@ -6,30 +6,36 @@ import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class RecipeService {
-    recipeSelected = new EventEmitter<Recipe>();
-    recipeEditing = new Subject<Recipe[]>();
-    recipes: Recipe[] = 
-    [
-        new Recipe('The test Name',
-            'the Test description',
-            'https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png',
-            [
-                new Ingredients('Meat', 1),
-                new Ingredients('French Fried', 20)
-            ]),
-        new Recipe('The test Name 2',
-            'the Test description 2',
-            'https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png',
-            [
-                new Ingredients('buns', 3),
-                new Ingredients('nuns', 5)
-            ])
-            ]
+    //recipeSelected = new EventEmitter<Recipe>();
+    recipeEditing = new Subject<Recipe[]>();    
+    private recipes: Recipe[]=[]; 
+    //= 
+    // [
+    //     new Recipe('The test Name',
+    //         'the Test description',
+    //         'https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png',
+    //         [
+    //             new Ingredients('Meat', 1),
+    //             new Ingredients('French Fried', 20)
+    //         ]),
+    //     new Recipe('The test Name 2',
+    //         'the Test description 2',
+    //         'https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png',
+    //         [
+    //             new Ingredients('buns', 3),
+    //             new Ingredients('nuns', 5)
+    //         ])
+    //         ]
 
             constructor(private shoppingListService:ShoppingListService){}
 
     getDetails() {
         return this.recipes.slice();
+    }
+
+    setRecipes(recipesData:Recipe[]){
+        this.recipes=recipesData;
+        this.recipeEditing.next(this.recipes.slice());
     }
 
     getRecipe(index:number){
